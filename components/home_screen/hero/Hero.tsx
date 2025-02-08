@@ -9,11 +9,16 @@ import { Video } from 'expo-av';
 import { Movie_Most_Trending_List } from '@/constants/data/Home';
 import { router, useFocusEffect, useRouter } from 'expo-router';
 import { useVideoStore } from '@/store/videoStore';
+import { useMovies } from '@/services/models/useMovies';
 
 const Hero = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   const { setCurrentVideo, setPlaybackPosition } = useVideoStore();
+
+  const { movies } = useMovies();
+
+  console.log(movies, 'phone of them all');
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);

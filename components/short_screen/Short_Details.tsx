@@ -36,7 +36,14 @@ const Short_Details = ({
         style={ShortReelsStyle.video}
         usePoster={true}
         PosterComponent={() => (
-          <Image source={item?.imageSource} style={ShortReelsStyle.video} />
+          <Image
+            source={
+              typeof item?.imageSource === 'string'
+                ? { uri: item?.imageSource }
+                : item?.imageSource
+            }
+            style={ShortReelsStyle.video}
+          />
         )}
         onPlaybackStatusUpdate={(status) => {
           if (status.isLoaded && isActive) {
